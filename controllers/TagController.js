@@ -1,6 +1,6 @@
 const Tag = require('../models/tagModel');
 const catchAsync = require('../utils/catchAsync');
-const ApiFeatures = require('./../utils/apiFeatures');
+const ApiFeatures = require('../utils/apiFeatures');
 
 exports.exploreBy = catchAsync(async (req, res, next) => {
     const exploreBy = await Tag.aggregate([{ $sample: { size: 5 } }]);
