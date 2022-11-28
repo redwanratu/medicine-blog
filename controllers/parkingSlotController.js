@@ -6,8 +6,8 @@ exports.getSlotStatus = catchAsync(async (req, res, next) => {
     status: 'success',
     data: {
       slot_1: 1,
-      slot_1: 2,
-      slot_1: 1,
+      slot_2: 2,
+      slot_3: 1,
     },
   });
 });
