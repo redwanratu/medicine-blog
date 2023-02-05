@@ -18,7 +18,7 @@ const signToken = (id) =>
 exports.signup = catchAsync(async (req, res, next) => {
   // ITs better to use only data we need to store for sign up
   //  const newUser = await User.create(req.body);
-
+  console.log('signUp');
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -109,6 +109,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
+    
     if (!roles.includes(req.user.role)) {
       console.log(req.user);
       return next(new AppError(`Access denied for ${req.user.role} role`, 404));
