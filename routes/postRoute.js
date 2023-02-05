@@ -8,8 +8,8 @@ router
   .route('/')
   .post(postController.createPost)
   .get(
-    authController.protect,
-    authController.restrictTo('user', 'admin', 'author', 'reader'),
+  //  authController.protect,
+  //  authController.restrictTo('user', 'admin', 'author', 'reader'),
     postController.getAllPosts
   );
 
