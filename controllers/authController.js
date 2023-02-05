@@ -2,7 +2,7 @@ const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const jwt = require('jsonwebtoken');
 const AppError = require('../utils/AppError');
-const sendMail = require('../utils/email');
+//const sendMail = require('../utils/email');
 const { promisify } = require('util');
 const crypto = require('crypto');
 //authentication should not be hamdled simply
@@ -144,11 +144,11 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
   // use try catch
   // if error occure reset the token and expire data at database to  reset
   try {
-    await sendMail({
-      email: user.email,
-      subject: 'Password reset token (valid for 10 min)',
-      message,
-    });
+   // await sendMail({
+   //   email: user.email,
+   //   subject: 'Password reset token (valid for 10 min)',
+   //   message,
+   // });
 
     res.status(200).json({
       message: `Password Reset Token send to ${user.email}`,
