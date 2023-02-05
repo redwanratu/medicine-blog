@@ -13,7 +13,7 @@ router
     postController.getAllPosts
   );
 
-routerhttps://github.com/redwanratu/medicine-blog/blob/main/routes/postRoute.js
+router
   .route('/home-short-info')
   .get(postController.aliasPostShortInfo, postController.getAllPosts);
 
