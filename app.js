@@ -4,8 +4,12 @@ const userRoute = require("./routes/userRoutes");
 const tagRoute = require("./routes/tagRoute");
 const parkingSlotRoute = require("./routes/parkingSlotRoute");
 const globalErrorHandler = require("./controllers/errorController");
+const cors =require("cors");
+
+
 
 const app = express();
+app.use(cors());
 
 app.set("view engine", "ejs");
 
