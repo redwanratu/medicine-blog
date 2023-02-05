@@ -9,8 +9,8 @@ router
   .post(postController.createPost)
   .get(
     authController.protect,
-    authController.restrictTo('user', 'admin', 'author', 'reader'),
-    postController.getAllPosts
+    //authController.restrictTo('user', 'admin', 'author', 'reader'),
+    //postController.getAllPosts
   );
 
 router
