@@ -8,12 +8,12 @@ router
   .route('/')
   .post(postController.createPost)
   .get(
-    authController.protect,
+    //authController.protect,
     //authController.restrictTo('user', 'admin', 'author', 'reader'),
-    //postController.getAllPosts
+    postController.getAllPosts
   );
 
-router
+routerhttps://github.com/redwanratu/medicine-blog/blob/main/routes/postRoute.js
   .route('/home-short-info')
   .get(postController.aliasPostShortInfo, postController.getAllPosts);
 
