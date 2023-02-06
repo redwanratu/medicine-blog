@@ -60,6 +60,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const token = signToken(user.id);
   res.status(201).json({
     status: 'success',
+    user,
     token,
   });
 });
