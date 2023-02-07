@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   photo: String,
   role: {
     type: String,
-    enum: ['user', 'admin', 'author','reader'],
+    enum: ['user', 'admin', 'author', 'reader'],
     default: 'user',
   },
 
@@ -47,6 +47,29 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
     select: false,
+  },
+  gender: {
+    type: String,
+    enum: ['M', 'F', 'O'],
+  },
+  bio: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  phoneNumber: {
+    type: String,
+  },
+  socialMediaLink: {
+    type: String,
+  },
+  relationshipStatus: {
+    type: String,
+  },
+
+  interest: {
+    type: String,
   },
 });
 
