@@ -5,6 +5,19 @@ const AppError = require('../utils/AppError');
 //const sendMail = require('../utils/email');
 const { promisify } = require('util');
 const crypto = require('crypto');
+
+
+const filterObj = (obj, ...objFields) => {
+  newObj = {};
+  console.log(obj);
+  Object.keys(obj).forEach((el) => {
+    if (objFields.includes(el)) newObj[el] = obj[el];
+  });
+
+  return newObj;
+};
+
+
 //authentication should not be hamdled simply
 //Users data is stake here
 // Payload Id, JWT secret , Expires time
@@ -56,11 +69,12 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError('Incorrect email or password'));
   }
 
+  
   // 3. If everythinks okay, sent token to client'
   const token = signToken(user.id);
   res.status(201).json({
     status: 'success',
-    user,
+    user:{'name':user.name,'email':user.email},
     token,
   });
 });

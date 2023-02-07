@@ -68,6 +68,16 @@ exports.readPost = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getPost = catchAsync(async (req, res, next) => {
+  console.log(req.params.id);
+  const readPost = await Post.findById(req.params.id);
+
+  res.status(200).json({
+    status: 'success',
+    data: { post: readPost },
+  });
+});
+
 exports.reactPost = catchAsync(async (req, res, next) => {
   console.log(req.params.id);
   const readPost = await Post.findById(req.params.id);

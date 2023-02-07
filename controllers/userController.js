@@ -20,25 +20,40 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getUser = catchAsync(async (req, res, next) => {
+  console.log(req.params.id);
+
+  const user = await User.findById(req.params.id);
+
+  res.status(200).json({
+    status: 'success',
+    data: { user, },
+  });
+});
+
+
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1. Create an error if user POSTs password
   if (req.body.password || req.body.passwordConfirm) {
     return next(new AppError('This route is not for password updating'), 404);
   }
   // 2. Filter out unwanted field
-  const filteredBody = filterObj(req.body, 'name', 'email');
+  const filteredBody = filterObj(req.body, 'name', 'email','phoneNumber','gender','bio','socialMediaLink','relationshipStatus','interest');
 
   // 3. update fields
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,
     runValidators: true,
   });
+  console.log(updatedUser)
 
   res.status(200).json({
     status: 'success',
     user: updatedUser,
   });
 });
+
+
 
 exports.deleteMe = catchAsync(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(

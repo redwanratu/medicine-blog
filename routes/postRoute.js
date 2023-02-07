@@ -25,4 +25,6 @@ router.route('/:id').get(postController.readPost);
 router.route('/:id/react').patch(postController.reactPost);
 router.route('/:id/comment').patch(postController.commentPost);
 
+router.route('/post/:id').get(postController.getPost);
+
 module.exports = router;

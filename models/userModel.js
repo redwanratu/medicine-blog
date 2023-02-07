@@ -50,26 +50,33 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ['M', 'F', 'O'],
+    enum: ['Male', 'Female', 'Others'],
   },
   bio: {
     type: String,
+    defualt: ''
   },
   address: {
     type: String,
+    defualt: ''
   },
   phoneNumber: {
     type: String,
+    defualt: ''
   },
   socialMediaLink: {
     type: String,
+    defualt: ''
   },
   relationshipStatus: {
     type: String,
+    enum: ['Single','In A Relationship','Married','Devorced'],
+    defualt: ''
   },
 
   interest: {
     type: String,
+    defualt: ''
   },
 });
 
