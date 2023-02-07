@@ -63,18 +63,19 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 2. Check if user exist && password is correct
-  const user = await User.findOne({ email }).select('+password');
+  const userFound = await User.findOne({ email }).select('+password');
 
-  if (!user || !(await user.correctPassword(password, user.password))) {
+  if (!userFound || !(await userFound.correctPassword(password, userFound.password))) {
     return next(new AppError('Incorrect email or password'));
   }
 
+  const user = await User.findOne({ email })
   
   // 3. If everythinks okay, sent token to client'
   const token = signToken(user.id);
   res.status(201).json({
     status: 'success',
-    user:{'name':user.name,'email':user.email},
+    user,//:{'name':user.name,'email':user.email},
     token,
   });
 });

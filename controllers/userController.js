@@ -23,7 +23,12 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
 exports.getUser = catchAsync(async (req, res, next) => {
   console.log(req.params.id);
 
-  const user = await User.findById(req.params.id);
+  let user = await User.findById(req.params.id).select("-password");
+  
+
+  console.log(user)
+  
+
 
   res.status(200).json({
     status: 'success',
