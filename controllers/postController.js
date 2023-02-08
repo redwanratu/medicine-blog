@@ -36,7 +36,7 @@ exports.getAllPosts = catchAsync(async (req, res, next) => {
 
 exports.createPost = catchAsync(async (req, res, next) => {
   console.log('post create');
-  const { title, author, desc, summary, imgUrl, tags } = req.body;
+  const { title, author, desc, summary, imgUrl, tags, category } = req.body;
   console.log(tags);
   const newPost = await Post.create({
     title: title,
@@ -45,6 +45,7 @@ exports.createPost = catchAsync(async (req, res, next) => {
     summary: summary,
     imgUrl: imgUrl,
     tags: tags,
+    category:category,
   });
 
   res.status(200).json({

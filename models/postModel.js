@@ -24,7 +24,7 @@ const postSchema = new mongoose.Schema({
       createAt: { type: Date, default: Date.now },
     },
   ],
-  category: {type: String, default: 'General'},
+  category: {type: String, default: 'General', required:[True,"Category Missing"]},
   comments: [{ type: String }],
   meta: {
     views: { type: Number, default: 0 },
